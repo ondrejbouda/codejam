@@ -8,19 +8,25 @@ class DatasetSolver
     /** @var Reader */
     private $reader;
 
-    /** @var caseSolverFactory */
-    private $caseSolverFactory;
+    /** @var CaseSolver */
+    private $caseSolver;
 
-    function __construct($dataset, $caseSolverFactory)
+
+    /**
+     * @param string $dataset filename
+     * @param CaseSolver $caseSolver
+     */
+    function __construct($dataset, CaseSolver $caseSolver)
     {
         $this->reader = new Reader($dataset);
-        $this->caseSolverFactory = $caseSolverFactory;
+        $this->caseSolver = $caseSolver;
     }
 
     /**
      * Solves the whole dataset to file.
      *
      * @param string $outputFile
+     * @return void
      */
     public function solveToFile($outputFile)
     {
@@ -30,8 +36,7 @@ class DatasetSolver
 
         for($i = 1; $i <= $cases; $i++)
         {
-            $caseSolver = $this->caseSolverFactory->getSolver($this->reader);
-            $writer->writeLine("Case #$i: " . $caseSolver->solve());
+            $writer->writeLine("Case #$i: " . $this->caseSolver->solve($this->reader));
         }
 
         $writer->close();

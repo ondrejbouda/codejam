@@ -12,7 +12,7 @@ $inputFile = 'DatasetSolver.in';
 $outputFile = Tester\FileMock::create('');
 $outputFileExpected = 'DatasetSolver.out.expected';
 
-$solver = new Bouda\CodeJam\DatasetSolver($inputFile, new Bouda\CodeJam\CaseSolverFactorySimple('Bouda\CodeJam\CaseSolverNaive'));
+$solver = new Bouda\CodeJam\DatasetSolver($inputFile, new Bouda\CodeJam\CaseSolverNaive);
 
 $solver->solveToFile($outputFile);
 

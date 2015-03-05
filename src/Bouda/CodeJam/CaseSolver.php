@@ -8,20 +8,11 @@ namespace Bouda\CodeJam;
  */
 abstract class CaseSolver
 {
-    /** @var Reader */
-    protected $reader;
-
-
-    function __construct(Reader $reader)
-    {
-        $this->reader = $reader;
-    }
-
-
     /**
      * Must be overriden in implementation.
      *
+     * @param Reader $reader
      * @return string solution
      */
-    public abstract function solve();
+    public abstract function solve(Reader $reader);
 }

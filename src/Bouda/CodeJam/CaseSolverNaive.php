@@ -8,8 +8,8 @@ namespace Bouda\CodeJam;
  */
 class CaseSolverNaive extends CaseSolver
 {
-    public function solve()
+    public function solve(Reader $reader)
     {
-        return $this->reader->readLine();
+        return $reader->readLine();
     }
 }

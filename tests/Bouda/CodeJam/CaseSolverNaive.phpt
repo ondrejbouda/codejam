@@ -15,6 +15,6 @@ $inputFile = Tester\FileMock::create($testString);
 
 $reader = new Bouda\CodeJam\Reader($inputFile);
 
-$testCase = new Bouda\CodeJam\CaseSolverNaive($reader);
+$caseSolver = new Bouda\CodeJam\CaseSolverNaive;
 
-Assert::equal($testString, $testCase->solve());
+Assert::equal($testString, $caseSolver->solve($reader));

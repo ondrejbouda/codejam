@@ -9,15 +9,14 @@ include __DIR__ . '/../vendor/autoload.php';
 
 class CaseSolverAdder extends CaseSolver
 {
-    public function solve()
+    public function solve(Bouda\CodeJam\Reader $reader)
     {
-        $numbers = $this->reader->readArrayOfInteger();
+        $numbers = $reader->readArrayOfInteger();
 
         return $numbers[0] + $numbers[1];
     }
 
 }
 
-$solverFactory = new CaseSolverFactorySimple('CaseSolverAdder');
-$datasetSolver = new DatasetSolver('dataset.in', $solverFactory);
+$datasetSolver = new DatasetSolver('dataset.in', new CaseSolverAdder());
 $datasetSolver->solveToFile('dataset.out');
