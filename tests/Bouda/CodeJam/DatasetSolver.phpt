@@ -17,3 +17,9 @@ $solver = new Bouda\CodeJam\DatasetSolver($inputFile, new Bouda\CodeJam\CaseSolv
 $solver->solveToFile($outputFile);
 
 Assert::matchFile($outputFileExpected, file_get_contents($outputFile));
+
+
+Assert::error(function() use ($inputFile) {
+    new Bouda\CodeJam\DatasetSolver($inputFile, new \stdClass);
+}, 'E_RECOVERABLE_ERROR'
+);
