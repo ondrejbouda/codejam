@@ -8,10 +8,13 @@ class DatasetSolver
     /** @var Reader */
     private $reader;
 
+    /** @var caseSolverFactory */
+    private $caseSolverFactory;
 
-    function __construct($dataset)
+    function __construct($dataset, $caseSolverFactory)
     {
         $this->reader = new Reader($dataset);
+        $this->caseSolverFactory = $caseSolverFactory;
     }
 
     /**
@@ -27,8 +30,8 @@ class DatasetSolver
 
         for($i = 1; $i <= $cases; $i++)
         {
-            $testCase = new CaseSolverNaive($this->reader);
-            $writer->writeLine("Case #$i: " . $testCase->solve());
+            $caseSolver = $this->caseSolverFactory->getSolver($this->reader);
+            $writer->writeLine("Case #$i: " . $caseSolver->solve());
         }
 
         $writer->close();

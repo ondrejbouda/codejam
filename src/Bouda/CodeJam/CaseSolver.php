@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ondrej
- * Date: 5. 3. 2015
- * Time: 2:03
- */
 
 namespace Bouda\CodeJam;
 
@@ -29,5 +23,5 @@ abstract class CaseSolver
      *
      * @return string solution
      */
-    public function solve() {}
+    public abstract function solve();
 }
